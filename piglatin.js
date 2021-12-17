@@ -43,10 +43,9 @@ const englishToPiglatin = (word) => {
       let remainingWord = word.substring(1);  
       let firstLtrOfRemainingWord = remainingWord.substring(0,1);
       let upperCaseFirstLetterOfRemainingWord = firstLtrOfRemainingWord.toUpperCase();
-      const remainingWordNoFirstLetter = remainingWord.substring(1);
       remainingWordAccountForUpperCase = word.substring(2); 
       let lettersToMove = firstLetter.toLowerCase();
-      if((firstLetter.concat(secondLetter)) == 'Qu'){
+      if((firstLetter.concat(secondLetter)) == 'Qu'){ //  <--- likely ref specialCharSets array (?) 
         remainingWord = word.substring(2);  
         firstLtrOfRemainingWord = remainingWord.substring(0,1);
         upperCaseFirstLetterOfRemainingWord = firstLtrOfRemainingWord.toUpperCase();

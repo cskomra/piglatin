@@ -48,7 +48,7 @@ describe('piglatin.js', () => {
       })
     })
 
-    /* describe('given: word begins with lowercase ch', () => {
+    describe('given: word begins with lowercase ch', () => {
       describe('when: I envoke englishToPiglatin', () => {
         it(`then: it moves first two letters to back and appends 'ay'`, () => {
           const word = 'cheddar';
@@ -57,7 +57,7 @@ describe('piglatin.js', () => {
           expect(result).toBe(expected);
         })
       })
-    }) */
+    })
   })
 
 })

@@ -2,7 +2,7 @@ const englishToPiglatin = require('./piglatin');
 
 describe('piglatin.js', () => {
   describe('INVALID test cases', () => {
-    describe('DONE-given: word is null', () =>{
+    describe('1 - given: word is null', () =>{
       describe('when: englishToPiglatin is invoked', () => {
         it('then: it returns an empty string', () => {
           const word = null;
@@ -15,7 +15,7 @@ describe('piglatin.js', () => {
   })
 
   describe('VALID test cases', () => {
-    describe('DONE-given: word begins with a lowercase consonant', () => {
+    describe('2 - given: word begins with a lowercase consonant', () => {
       describe('when: I envoke englishToPiglatin', () => {
         it(`then: it moves first letter to back and appends 'ay'`, () => {
           const word = 'something';
@@ -26,7 +26,7 @@ describe('piglatin.js', () => {
       })
     })
 
-    describe('DONE-given: word begins with a lowercase vowel', () => {
+    describe('3 - given: word begins with a lowercase vowel', () => {
       describe('when: I envoke englishToPiglatin', () => {
         it(`then: it appends 'ay'`, () => {
           const word = 'orange';
@@ -37,7 +37,7 @@ describe('piglatin.js', () => {
       })
     })
 
-    describe('DONE-given: word begins with an uppercase consonant', () => {
+    describe('4 - given: word begins with an uppercase consonant', () => {
       describe('when: I envoke englishToPiglatin', () => {
         it(`then: it moves first letter to back, capitalizes word, and appends 'ay'`, () => {
           const word = 'Something';
@@ -48,7 +48,7 @@ describe('piglatin.js', () => {
       })
     })
 
-    describe('given: word begins with lowercase ch', () => {
+    describe('5 - given: word begins with lowercase ch', () => {
       describe('when: I envoke englishToPiglatin', () => {
         it(`then: it moves first two letters to back and appends 'ay'`, () => {
           const word = 'cheddar';
@@ -59,12 +59,23 @@ describe('piglatin.js', () => {
       })
     })
 
-    describe('given: word begins with uppercase vowell', () => {
+    describe('6 - given: word begins with uppercase vowell', () => {
       describe('when: I envoke englishToPiglatin', () => {
         it(`then: it appends 'ay'`, () => {
           const word = 'Owl';
           const result = englishToPiglatin(word);
           const expected = 'Owlay';
+          expect(result).toBe(expected);
+        })
+      })
+    })
+
+    describe('7 - given: word begins with uppercase Qu', () => {
+      describe('when: I envoke englishToPiglatin', () => {
+        it(`then: it moves 'qu' to back and appends 'ay'`, () => {
+          const word = 'Queen';
+          const result = englishToPiglatin(word);
+          const expected = 'Eenquay';
           expect(result).toBe(expected);
         })
       })

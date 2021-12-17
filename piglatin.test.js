@@ -58,6 +58,18 @@ describe('piglatin.js', () => {
         })
       })
     })
-  })
+
+    describe('given: word begins with uppercase vowell', () => {
+      describe('when: I envoke englishToPiglatin', () => {
+        it(`then: it appends 'ay'`, () => {
+          const word = 'Owl';
+          const result = englishToPiglatin(word);
+          const expected = 'Owlay';
+          expect(result).toBe(expected);
+        })
+      })
+    })
+
+  }) //end valid test cases
 
 })

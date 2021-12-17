@@ -2,23 +2,41 @@ const englishToPiglatin = (word) => {
 
   if(word === null) return '';
   
-  const vowellsArray = ['a', 'e', 'i', 'o', 'u'];
   const firstLetter = word.substring(0,1);
-  const firstLetterIsVowell = vowellsArray.includes(firstLetter);
   const secondLetter = word.substring(1,2);
-
-  if(firstLetterIsVowell) 
-    return `${word}ay`;
-
-  const firstTwoLettersAreConsonants = !firstLetterIsVowell && !vowellsArray.includes(secondLetter);
-  if(firstTwoLettersAreConsonants){
-    const remainingWord = word.substring(2);
-    return `${remainingWord}${firstLetter}${secondLetter}ay`;
+  
+  const letterIsVowel = function(letter){
+    const vowels = 'aeiou';
+    if(vowels.includes(letter.toLowerCase())){
+      return true;
+    } 
+    return false;
   }
 
+  const letterIsUpperCase = function(letter){
+    if(letter == letter.toUpperCase()){
+      return true;
+    }
+    return false;
+  }
 
-  //here
-  const firstLetterIsUppercase = firstLetter === firstLetter.toUpperCase();
+  const toProperCase = function(word){
+    return word.toLowerCase().replace(/^(.)|\s(.)/g, 
+      function($1) { return $1.toUpperCase(); });
+  }
+
+  const firstLetterIsUppercase = letterIsUpperCase(firstLetter);
+  const firstLetterIsVowell = letterIsVowel(firstLetter);
+  
+  if(firstLetterIsVowell){
+    if(firstLetterIsUppercase){
+      return `${toProperCase(word)}ay`;
+    }
+    return `${word}ay`;
+  } 
+  
+  //firstLetterIsConsonant...
+
   if(firstLetterIsUppercase){
     const remainingWord = word.substring(1);  
     const firstLtrOfRemainingWord = remainingWord.substring(0,1);
@@ -27,9 +45,16 @@ const englishToPiglatin = (word) => {
     const lowerCaseFirstLetter = firstLetter.toLowerCase();
     return `${upperCaseFirstLetterOfRemainingWord}${remainingWordNoFirstLetter}${lowerCaseFirstLetter}ay`;
   }
-  
+
+  const firstTwoLettersAreConsonants = !(letterIsVowel(firstLetter)) && !(letterIsVowel(secondLetter));
+  if(firstTwoLettersAreConsonants){
+    const remainingWord = word.substring(2);
+    return `${remainingWord}${firstLetter}${secondLetter}ay`;
+  }
+
   const remainingWord = word.substring(1);  
   return `${remainingWord}${firstLetter}ay`;
 }
 
 module.exports = englishToPiglatin;
+//console.log(englishToPiglatin('Owl'));
